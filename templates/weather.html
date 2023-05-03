@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://globant.com">Test Globant ></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/weather">Weather</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+<h1><center>{{title}}</center></h1>
+
+<div class="container col-md-auto">
+  {% from "_macro.html" import render_field %}
+    <form id="query-form" method="POST">
+        <input type="hidden" name="_method" value="post" />
+        {{render_field(query.country_code)}}
+        {{render_field(query.city)}}
+        <br>
+        <button type="submit" class="btn btn-primary">Get Weather</button>
+    </form>
+</div><br /><br />
+<div class="container col-md-auto">
+  Location Name: {{location}}, {{country}} <br />
+  Temperature: {{tempC}} *C, {{tempF}} *F <br />
+  Wind: {{wind}} km/h <br />
+  Cloudiness: {{cloud}} <br />
+  Pressure: {{pressure}} hpa <br />
+  Humidity: {{humidity}}% <br /> 
+  Sunrise: {{sunrise}} <br />
+  Sunset: {{sunset}} <br />
+  Geocoordinates: [{{longitud}}, {{latitud}}] <br />
+  Request Time: {{req_time}}
+</div>
+
+{% endblock%}

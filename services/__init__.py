@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 
-def create_app(config=None) -> Flask:
+def create_app(config) -> Flask:
     '''Creates Flask App
 
     Args:
@@ -19,8 +19,6 @@ def create_app(config=None) -> Flask:
     
     app.config.from_object(config)
 
-    CORS(app)
-
-    #app.register_blueprint()
+    CORS(app)    
 
     return app
